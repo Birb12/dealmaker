@@ -8,8 +8,8 @@ import gc
 
 
 torch.manual_seed(42)
-tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-j-6B", bos_token='<|startoftext|>', eos_token='<|endoftext|>', pad_token='<|pad|>')
-model = AutoModelForCausalLM.from_pretrained("EleutherAI/gpt-j-6B", torch_dtype=torch.float16, low_cpu_mem_usage=True).to("cuda", torch_dtype=torch.float16)
+tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-neo-1.3B", bos_token='<|startoftext|>', eos_token='<|endoftext|>', pad_token='<|pad|>')
+model = AutoModelForCausalLM.from_pretrained("EleutherAI/gpt-neo-1.3B", torch_dtype=torch.float16, low_cpu_mem_usage=True)
 model.resize_token_embeddings(len(tokenizer)) # token embeddings must be resized since we added special tokens
 preferred_output = pd.read_csv('datafortrain.csv')
 generated_prompts = []
